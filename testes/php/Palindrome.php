@@ -14,13 +14,22 @@ Exemplo: isPalindrome("Asa") deve retonar true.
 
 
 
-
 class Palindrome
 {
     public static function isPalindrome($word)
     {
-        return NULL;
+
+    	$word_invert = strrev($word);
+
+    	$verify = "";
+    	for ($i=0; $i<strlen($word); $i++){
+    		if (strtoupper($word[$i]) != strtoupper($word_invert[$i])){
+    			return false;
+    		}
+    	}
+    	
+        return true;
     }
 }
 
-echo Palindrome::isPalindrome('Deleveled');
+var_dump(Palindrome::isPalindrome('Deleveled'));

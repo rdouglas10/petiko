@@ -15,9 +15,19 @@ class FileOwners
 {
     public static function groupByOwners($files)
     {
-        return NULL;
-    }
+        
+        $new_files = array();
+        foreach ($files as $key => $value) { 
+        	if (array_key_exists($value, $new_files)){
+        		array_push($new_files[$value], $key);
+    		}else{
+    			$new_files[$value] = array($key);
+    		}
+    	}
+    		return $new_files;
+    }        
 }
+
 
 $files = array
 (
@@ -25,7 +35,7 @@ $files = array
     "Code.py" => "Joao",
     "Output.txt" => "Jose",
     "Click.js" => "Maria",
-    "Out.php" => "maria",
+    "Out.php" => "Maria",
 
 );
-var_dump(FileOwners::groupByOwners($files));
+print_r(FileOwners::groupByOwners($files));

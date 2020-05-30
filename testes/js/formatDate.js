@@ -2,9 +2,11 @@
 
 // Por exemplo, ele deve converter a data de entrada do usuário "31/12/2014" em "20141231" adequada para a API.
 
-
 function formatDate(userDate) {
   // format from M/D/YYYY to YYYYMMDD
+  var resultado = userDate.split("/");
+  var data_formatada = resultado[2] + resultado[0] + resultado[1];
+  return data_formatada;
 }
 
 console.log(formatDate("12/31/2014"));

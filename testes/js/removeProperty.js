@@ -6,5 +6,18 @@
 // em todos os outros casos, retorna falso.
 
 function removeProperty(obj, prop) {
-  return null;
+  if (obj.hasOwnProperty(prop)) {
+    delete obj.prop;
+    return true;
+  } else {
+    return false;
+  }
 }
+
+var objeto = {
+  prop123: "valor1",
+  prop456: "valor2",
+  prop789: "valor3",
+};
+
+removeProperty(meuObjeto, "prop789");

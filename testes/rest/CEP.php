@@ -41,9 +41,16 @@ class CEP
 {
     public static function getAddressByCep($cep)
     {
-        return NULL;
+			$url = "https://api.postmon.com.br/v1/cep/".$cep;
+			
+			$ch = curl_init($url);
+			curl_setopt($ch, CURLOPT_URL, $url);
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+			$output = curl_exec($ch);
+			curl_close($ch);
+			return $output;
     }
 }
 
 
-var_dump(CEP::getAddressByCep($cep));
+var_dump(CEP::getAddressByCep(57020360));

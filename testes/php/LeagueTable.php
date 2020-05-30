@@ -37,7 +37,7 @@ class LeagueTable
     {
 		$this->standings = array();
 		foreach($players as $index => $p)
-        {
+        {	
 			$this->standings[$p] = array
             (
                 'index' => $index,
@@ -45,17 +45,43 @@ class LeagueTable
                 'score' => 0
             );
         }
+        
 	}
 		
+
 	public function recordResult($player, $score)
     {
 		$this->standings[$player]['games_played']++;
 		$this->standings[$player]['score'] += $score;
+
 	}
+
 	
 	public function playerRank($rank)
-    {
-        return NULL;
+    {	
+        
+        foreach ($this->standings as $key => $row) {
+            $score[$key]  = $row['score']; 
+            $games_played[$key] = $row['games_played']; 
+        }
+
+        array_multisort($score, SORT_DESC, $games_played, SORT_ASC, $this->standings);
+
+        $count = 1;
+        foreach ($this->standings as $key => $value) {
+            if($count == ($rank)) {
+                $playerInRank = array(
+                    'name' => $key,
+                    'score' => $value['score'],
+                    'games' => $value['games_played'],
+                );
+                return $playerInRank['name'];
+            }
+            $count++;
+        }
+        return false;
+
+
 	}
 }
       

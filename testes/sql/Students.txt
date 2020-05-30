@@ -4,3 +4,6 @@ TABLE students
    id INTEGER PRIMARY KEY,
    firstName VARCHAR(30) NOT NULL,
    lastName VARCHAR(30) NOT NULL
+
+
+RESPOSTA: SELECT COUNT(id) as quantidade_de_johns FROM students WHERE firstName = "John"
